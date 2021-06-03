@@ -67,8 +67,8 @@
 					  htmlMovieList += '<li>' + item + '</li>';
 				});
 				htmlMovieList += '</ul>';
-				$('#div-success').html("");
-				$('#div-success').append(htmlMovieList);
+				$('#div-listado-actores').html("");
+				$('#div-listado-actores').append(htmlMovieList);
 			}
 		} );
 
@@ -171,8 +171,8 @@
 			    var htmlMovieList = '<ul>';
 			    htmlMovieList += 'Datos ingresados';
 				htmlMovieList += '</ul>';
-				$('#div-listado-actores').html("");
-				$('#div-listado-actores').append(htmlMovieList);
+				$('#div-success').html("");
+				$('#div-success').append(htmlMovieList);
 			}
 		} );
 		
