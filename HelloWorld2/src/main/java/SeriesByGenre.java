@@ -17,7 +17,7 @@ import dataAccessLayer.EmbeddedNeo4j;
 import org.json.simple.JSONArray;
 
 /**
- * Servlet implementation class MoviesByActor
+ * Servlet implementation class SeriesByGenre
  */
 @WebServlet("/SeriesByGenre")
 public class SeriesByGenre extends HttpServlet {
@@ -43,9 +43,11 @@ public class SeriesByGenre extends HttpServlet {
 	 	
 	 	JSONArray PeliculasActor = new JSONArray();
 	 	
+		//Se llama el parametro del nombre del genero.
 	 	String myActor = request.getParameter("genre_name");
 	 	 try ( EmbeddedNeo4j greeter = new EmbeddedNeo4j( "bolt://localhost:7687", "Proyecto", "Prueba1234" ) )
 	        {
+			 	//Se llama al Neo4j y donde se obtiene las series por genero y se guarda en el JSONArray de un LinkedList. 
 			 	LinkedList<String> myactors = greeter.getSeriesByGenre(myActor);
 			 	
 			 	for (int i = 0; i < myactors.size(); i++) {
@@ -58,7 +60,8 @@ public class SeriesByGenre extends HttpServlet {
 				e.printStackTrace();
 			}
 	 	
-	 	myResponse.put("conteo", PeliculasActor.size()); //Guardo la cantidad de actores
+		//Se guarda en el JSONObject la canitdad de series guardadas y el nombre de las series.
+	 	myResponse.put("conteo", PeliculasActor.size()); 
 	 	myResponse.put("series", PeliculasActor);
 	 	out.println(myResponse);
 	 	out.flush();  
